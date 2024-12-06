@@ -1,4 +1,4 @@
------------------------------------------------------------
+---------------------------------------------------------
 -- Neovim LSP configuration file
 -----------------------------------------------------------
 
@@ -66,7 +66,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 -- Diagnostic settings:
@@ -122,7 +122,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'ts_ls' }
+local servers = { 'bashls', 'clangd', 'html', 'cssls', 'ts_ls' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -136,3 +136,29 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+require('lspconfig').ruff.setup({
+  on_attach = on_attach,
+  init_options = {
+    settings = {
+      configurationPreference = "filesystemFirst"
+      -- Ruff language server settings go here
+    }
+  }
+})
+
+require('lspconfig').pyright.setup {
+  on_attach = on_attach,
+  settings = {
+    pyright = {
+      -- Using Ruff's import organizer
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        -- Ignore all files for analysis to exclusively use Ruff for linting
+        ignore = { '*' },
+      },
+    },
+  },
+}
