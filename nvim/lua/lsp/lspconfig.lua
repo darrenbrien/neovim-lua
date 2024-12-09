@@ -106,7 +106,7 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 Language server installed:
 
 Bash          -> bashls
-Python        -> pyright
+Python        -> ruff
 C-C++         -> clangd
 HTML/CSS/JSON -> vscode-html-languageserver
 JavaScript/TypeScript -> ts_ls
@@ -146,19 +146,3 @@ require('lspconfig').ruff.setup({
     }
   }
 })
-
-require('lspconfig').pyright.setup {
-  on_attach = on_attach,
-  settings = {
-    pyright = {
-      -- Using Ruff's import organizer
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        -- Ignore all files for analysis to exclusively use Ruff for linting
-        ignore = { '*' },
-      },
-    },
-  },
-}
