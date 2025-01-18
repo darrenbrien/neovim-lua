@@ -19,6 +19,7 @@ require('plugins/indent-blankline')
 require('plugins/nvim-cmp')
 require('plugins/nvim-treesitter')
 require('plugins/alpha-nvim')
+vim.wo.wrap = false
 vim.wo.relativenumber = true
 vim.g.python_host_prog = '~/.nvim_py/bin/python'
 vim.g.python3_host_prog = '~/.nvim_py/bin/python'

@@ -34,11 +34,15 @@ map('n', '<leader>tk', '<C-w>t<C-w>K') -- change vertical to horizontal
 map('n', '<leader>th', '<C-w>t<C-w>H') -- change horizontal to vertical
 
 -- Move around splits using Ctrl + {h,j,k,l}
-map('n', '<C-h>', '<C-w>h')
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
-map('n', '<C-l>', '<C-w>l')
+map('n', '<leader>h', '<C-w>h')
+map('n', '<leader>j', '<C-w>j')
+map('n', '<leader>k', '<C-w>k')
+map('n', '<leader>l', '<C-w>l')
 
+map('n', '<leader>H', '10<C-w><')
+map('n', '<leader>J', '10<C-w>+')
+map('n', '<leader>K', '10<C-w>-')
+map('n', '<leader>L', '10<C-w>>')
 -- Reload configuration without restart nvim
 map('n', '<leader>r', ':so %<CR>')
 
